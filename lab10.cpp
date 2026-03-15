@@ -73,4 +73,27 @@ double gRec(unsigned i) {
 
 double gStack(unsigned i) {
     // TODO
+    ArrayStack<unsigned> stack(100);
+
+    stack.push(i);
+
+    // Simulate recursive calls
+    while (stack.peek() != 0) {
+        stack.push(stack.peek() - 1);
+    }
+
+    cout << "Base case!\n";
+    double result = 3.2;
+
+    // Simulate returning from recursion
+    while (!stack.isEmpty()) {
+        unsigned val = stack.peek();
+        stack.pop();
+
+        if (val != 0) {
+            result += 1.1;
+        }
+    }
+
+    return result;
 }
